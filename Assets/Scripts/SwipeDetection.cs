@@ -61,8 +61,11 @@ public class SwipeDetection : MonoBehaviour
             RaycastHit[] raycastHits = Physics.SphereCastAll(sphereStart, sphereCastRadius, direction.normalized, sphereCastRadius);
             foreach (RaycastHit hit in raycastHits)
             {
-                Debug.Log(hit);
-                hit.transform.gameObject.SetActive(false);
+                //Debug.Log(hit);
+  
+                GameObject hitObject = hit.transform.gameObject;
+                SliceableObject sliceable = hitObject.GetComponent<SliceableObject>();
+                sliceable.OnSlice();
             }
         }
 
